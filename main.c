@@ -7,7 +7,7 @@
 
 int opcionesMenuPrincipal();
 
-Manufactura manufactura;
+CelulaManufactura *manufactura;
 //manufactura.producto = NULL;
 //manufactura.materiaprima = NULL;
 //manufactura.maquina = NULL;
@@ -34,7 +34,7 @@ int opcionesMenuPrincipal()
     return opcion;
 }
 
-//Menú principal
+//Menï¿½ principal
 
 int main()
 {
@@ -59,8 +59,12 @@ int opcion;
             break;
 
         case 4:
-	    break;
-	}
+            printf("Gracias por utilizar el programa\n\n");
+	        break;
+        default:
+            printf("Opcion no valida\n\n");
+            break;
+	    }
     }
 	while(opcion!=4);
 	return 0;
