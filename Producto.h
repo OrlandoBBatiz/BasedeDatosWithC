@@ -1,5 +1,5 @@
-#ifndef _Funciones_
-#define _Funciones_
+#ifndef PRODUCTO_H_
+#define PRODUCTO_H_
 #include "estructuras.h"
 
 Producto *crearNodoProducto(int id, char descripcionproducto[]);

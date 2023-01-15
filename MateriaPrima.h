@@ -1,5 +1,5 @@
-#ifndef _Funciones_
-#define _Funciones_
+#ifndef MATERIA_PRIMA_H_
+#define MATERIA_PRIMA_H_
 #include "estructuras.h"
 
 MateriaPrima *crearNodo(int id, char descripcionmateria[], float cantidad);

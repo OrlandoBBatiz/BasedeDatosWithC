@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "estructuras.h"
+#include "MateriaPrima.h"
+#include "Producto.h"
 #define CLEAR "cls"
 
 
@@ -16,8 +18,8 @@ CelulaManufactura *manufactura;
 
 int main(){
 
-    int opcionMP;
-    int opcionMateriaPrima;
+    int opcionMP=0;
+    int opcionMateriaPrima=0;
     manufactura->materiaPrima = NULL;
     manufactura->producto = NULL;
     manufactura->maquina = NULL;
@@ -32,7 +34,7 @@ int main(){
     int id_maquina;
     char descripcionmaquina[20];
 
-
+    printf("Hello   World");
         do{
         system(CLEAR);
             printf("=============MANUFACTURA=============\n\n");
@@ -57,11 +59,11 @@ int main(){
                 switch(opcionMateriaPrima)
                 {
                 case 1:
-                    print("Descripcion Materia Prima: ");
+                    printf("Descripcion Materia Prima: ");
                     fflush(stdin);
                     fgets(descripcionmateria, 50, stdin);
                     fflush(stdin);
-                    print("Cantidad Materia Prima: ");
+                    printf("Cantidad Materia Prima: ");
                     scanf("%f", &cantidadmateriaprima);
                     manufactura->materiaPrima = agregarMateriaPrima(manufactura, descripcionmateria, cantidadmateriaprima);
                     break;

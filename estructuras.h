@@ -1,27 +1,29 @@
+#ifndef ESTRUCTURA_H_
+#define ESTRUCTURA_H_
 
-typedef struct{
+typedef struct MateriaPrima{
   int id_materiaprima;
   char descripcionmateria[50];
   float cantidad;
-  struct materiaprima *apSiguiente;
+  struct MateriaPrima *apSiguiente;
 } MateriaPrima;
 
-typedef struct{
+typedef struct Producto{
   int id_producto;
   char descripcionproducto[20];
-  struct producto *apSiguiente;
+  struct Producto *apSiguiente;
 } Producto;
 
-typedef struct{
+typedef struct Maquina{
   int id_maquina;
   char nombre[20];
-  struct maquina *apSiguiente;
+  struct Maquina *apSiguiente;
 } Maquina;
 
-typedef struct{
-  Producto *producto;
-  MateriaPrima *materiaPrima;
-  Maquina *maquina;
+typedef struct CelulaManufactura{
+  struct Producto *producto;
+  struct MateriaPrima *materiaPrima;
+  struct Maquina *maquina;
 } CelulaManufactura;
 
-
+#endif /* ESTRUCTURA_H_ */
