@@ -20,8 +20,8 @@ typedef struct{
 
 typedef struct{
   Producto *producto;
-  MateriaPrima *materiaprima;
+  MateriaPrima *materiaPrima;
   Maquina *maquina;
-} Manufactura;
+} CelulaManufactura;
 
 

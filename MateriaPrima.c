@@ -1,64 +1,85 @@
 #include "MateriaPrima.h"
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-
-void agregarMateriaPrima(Manufactura *manufactura)
- {
-  // Crea un nuevo elemento de la lista de materias prima
-  MateriaPrima *nuevo = malloc(sizeof(MateriaPrima));
+MateriaPrima *crearNodo(int id, char decripcionmateria[], float cantidad){
+  MateriaPrima *nuevo; 
+  nuevo = malloc(sizeof(MateriaPrima));
   if (nuevo == NULL) {
     printf("Error al reservar memoria.\n");
     return;
   }
+  strcpy(nuevo->descripcionmateria, decripcionmateria);
+  nuevo->cantidad = cantidad;
+  nuevo->apSiguiente = NULL;
+  return nuevo;
+}
 
-  // Pide al usuario que ingrese los datos de la materia prima
-  printf("Ingresa los datos de la materia prima:\n");
-  printf("Ingrese el id de la materia prima: ");
-  scanf("%d", &nuevo->id_materiaprima);
-  printf("Descripcion de la materia prima: ");
-  scanf("%s", nuevo->descripcionmateria);
-  printf("Cantidad: ");
-  scanf("%d", &nuevo->cantidad);
+MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripcionmateria[], float cantidad)
+ {
+  MateriaPrima *nuevo; 
+  MateriaPrima *aux;
+  int id;
 
-  // Enlaza el nuevo elemento al final de la lista
-  nuevo->siguiente = NULL;
-  if (manufactura->materiaprima == NULL) {
-    manufactura->materiaprima = nuevo;
-  } else {
-    MateriaPrima *aux = manufactura->materiaprima;
-    while (aux->siguiente != NULL) {
-      aux = aux->siguiente;
+  aux = manufactura->materiaPrima;
+  if(aux == NULL){
+    id = 1;
+  }
+  else{
+    while (aux->apSiguiente != NULL) {
+    aux = aux->apSiguiente;
+  }
+  id = aux->id_materiaprima + 1;
+  }
+  
+  nuevo = crearNodo( id, descripcionmateria, cantidad);
+  
+  aux = manufactura->materiaPrima;
+  if(aux == NULL){
+    manufactura->materiaPrima = nuevo;
+  }
+  else{
+    while (aux->apSiguiente != NULL) {
+      aux = aux->apSiguiente;
     }
-    aux->siguiente = nuevo;
+    aux->apSiguiente = nuevo;
   }
 
   printf("Materia Prima dada de alta correctamente.\n");
   getch();
 }
 
+void listarMateriasPrimas(CelulaManufactura *manufactura) {
+  // Recorre la lista de materias prima e imprime los datos de cada una
+  MateriaPrima *aux = manufactura->materiaPrima;
+  print("Id Materia Prima %t Descripcion %t Cantidad");
 
-void eliminarMateriaPrima(Manufactura *manufactura) {
-  // Pide al usuario que ingrese el ID de la materia prima a eliminar
-  int id;
-  printf("Ingresa el ID de la materia prima a eliminar: ");
-  scanf("%d", &id);
+  while (aux != NULL) {
+    printf("ID: %d", aux->id_materiaprima);
+    printf("%tDescripcion: %s", aux->descripcionmateria);
+    printf("%tCantidad: %f", aux->cantidad);
+  }
+}
+
+MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materiaprima) {
 
   // Busca el elemento con el ID especificado
-  MateriaPrima *aux = manufactura->materiaprima;
+  MateriaPrima *aux = manufactura->materiaPrima;
   MateriaPrima *anterior = NULL;
-  while (aux != NULL && aux->id_materiaprima != id) {
+  while (aux != NULL && aux->id_materiaprima != id_materiaprima) {
     anterior = aux;
-    aux = aux->siguiente;
+    aux = aux->apSiguiente;
   }
 
-  // Si se encontró el elemento, lo elimina de la lista
+  // Si se encontrï¿½ el elemento, lo elimina de la lista
   if (aux == NULL) {
     printf("Materia prima no encontrada.\n");
   } else {
     if (anterior == NULL) {
-      manufactura->materiaprima = aux->siguiente;
+      manufactura->materiaPrima = aux->apSiguiente;
     } else {
-      anterior->siguiente = aux->siguiente;
+      anterior->apSiguiente = aux->apSiguiente;
     }
     free(aux);
     printf("Materia prima eliminada correctamente.\n");
@@ -66,25 +87,25 @@ void eliminarMateriaPrima(Manufactura *manufactura) {
   getch();
 }
 
-void modificarMateriaPrima(Manufactura *manufactura) {
-  // Pide al usuario que ingrese el ID de la materia prima a modificar
-  int id;
-  printf("Ingresa el ID de la materia prima a modificar: ");
-  scanf("%d", &id);
+MateriaPrima *modificarMateriaPrima(CelulaManufactura *manufactura, int id_materialprima) {
+ 
 
   // Busca el elemento con el ID especificado
-  MateriaPrima *aux = manufactura->materiaprima;
-  while (aux != NULL && aux->id_materiaprima != id) {
-    aux = aux->siguiente;
+  MateriaPrima *aux;
+  aux = manufactura->materiaPrima;
+  while (aux != NULL && aux->id_materiaprima != id_materialprima) {
+    aux = aux->apSiguiente;
   }
 
-  // Si se encontró el elemento, pide al usuario que ingrese los nuevos datos
+  // Si se encontrï¿½ el elemento, pide al usuario que ingrese los nuevos datos
   if (aux == NULL) {
     printf("Materia prima no encontrada.\n");
   } else {
     printf("Ingresa los nuevos datos de la materia:\n");
     printf("Descripcion: ");
-    scanf("%s", aux->descripcionmateria);
+    fflush(stdin);
+    fgets(aux->descripcionmateria, 50, stdin);
+    fflush(stdin);
     printf("Cantidad: ");
     scanf("%d", &aux->cantidad);
 

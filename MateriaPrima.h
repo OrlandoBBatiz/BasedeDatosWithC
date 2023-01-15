@@ -2,9 +2,11 @@
 #define _Funciones_
 #include "estructuras.h"
 
-void agregarMateriaPrima(Manufactura *manufactura);
-void listarMateriasPrimas(Manufactura *manufactura);
-void modificarMateriaPrima(Manufactura *manufactura);
-void eliminarMateriaPrima(Manufactura *manufactura);
+MateriaPrima *crearNodo(int id, char descripcionmateria[], float cantidad);
+MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripcionmateria[], float cantidad);
+void listarMateriasPrimas(CelulaManufactura *manufactura);
+MateriaPrima *modificarMateriaPrima(CelulaManufactura *manufactura, int id_materiaprima);
+MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materiaprima);
+
 
 #endif // _Funciones_
