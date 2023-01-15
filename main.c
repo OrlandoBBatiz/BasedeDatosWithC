@@ -21,6 +21,18 @@ int main(){
     manufactura->materiaPrima = NULL;
     manufactura->producto = NULL;
     manufactura->maquina = NULL;
+
+    int id_materiaprima;
+    char descripcionmateria[50];
+    float cantidadmateriaprima;
+
+    int id_producto;
+    char descripcionproducto[20];
+
+    int id_maquina;
+    char descripcionmaquina[20];
+
+
         do{
         system(CLEAR);
             printf("=============MANUFACTURA=============\n\n");
@@ -45,13 +57,23 @@ int main(){
                 switch(opcionMateriaPrima)
                 {
                 case 1:
-                    manufactura->materiaPrima = agregarMateriaPrima(manufactura);
+                    print("Descripcion Materia Prima: ");
+                    fflush(stdin);
+                    fgets(descripcionmateria, 50, stdin);
+                    fflush(stdin);
+                    print("Cantidad Materia Prima: ");
+                    scanf("%f", &cantidadmateriaprima);
+                    manufactura->materiaPrima = agregarMateriaPrima(manufactura, descripcionmateria, cantidadmateriaprima);
                     break;
                 case 2:
-                    manufactura->materiaPrima = modificarMateriaPrima(manufactura);
+                    printf("Ingrese el ID de la materia prima a modificar: ");
+                    scanf("%d", &id_materiaprima);
+                    manufactura->materiaPrima = modificarMateriaPrima(manufactura, id_materiaprima);
                     break;
                 case 3:
-                    manufactura->materiaPrima = eliminarMateriaPrima(manufactura);
+                    printf("Ingrese el ID de la materia prima a eliminar: ");
+                    scanf("%d", &id_materiaprima);
+                    manufactura->materiaPrima = eliminarMateriaPrima(manufactura, id_materiaprima);
                     break;
                 case 4:
                     listarMateriasPrimas(manufactura);
