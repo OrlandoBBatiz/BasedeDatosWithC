@@ -1,15 +1,17 @@
 #include "Producto.h"
 #include <string.h>
 
-
-void agregarProducto(Manufactura *manufactura)
+Producto *crearNodoProducto(int id, char descripcionproducto[])
+{
+    Producto *nuevo = (Producto *)malloc(sizeof(Producto));
+    nuevo->id_producto = id;
+    strcpy(nuevo->descripcionproducto, descripcionproducto);
+    nuevo->apSiguiente = NULL;
+    return nuevo;
+}	
+Producto *agregarProducto(CelulaManufactura *manufactura)
  {
-  // Crea un nuevo elemento de la lista de productos
-  Producto *nuevo = malloc(sizeof(Producto));
-  if (nuevo == NULL) {
-    printf("Error al reservar memoria.\n");
-    return;
-  }
+  Producto *nuevo = (Producto *)malloc(sizeof(Producto));
 
   // Pide al usuario que ingrese los datos del producto
   printf("Ingresa los datos del producto:\n");
@@ -34,7 +36,6 @@ void agregarProducto(Manufactura *manufactura)
   getch();
 }
 
-
 void eliminarProducto(Manufactura *manufactura) {
   // Pide al usuario que ingrese el ID del producto a eliminar
   int id;
@@ -49,7 +50,7 @@ void eliminarProducto(Manufactura *manufactura) {
     aux = aux->siguiente;
   }
 
-  // Si se encontró el elemento, lo elimina de la lista
+  // Si se encontrï¿½ el elemento, lo elimina de la lista
   if (aux == NULL) {
     printf("Producto no encontrado.\n");
   } else {
@@ -76,7 +77,7 @@ void modificarProducto(Manufactura *manufactura) {
     aux = aux->siguiente;
   }
 
-  // Si se encontró el elemento, pide al usuario que ingrese los nuevos datos
+  // Si se encontrï¿½ el elemento, pide al usuario que ingrese los nuevos datos
   if (aux == NULL) {
     printf("Producto no encontrado.\n");
   } else {

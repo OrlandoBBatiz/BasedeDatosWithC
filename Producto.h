@@ -2,10 +2,11 @@
 #define _Funciones_
 #include "estructuras.h"
 
-void agregarProducto(Manufactura *manufactura);
-void listarProductos(Manufactura *manufactura);
-void seleccionarProducto(Manufactura *manufactura);
-void eliminarProducto(Manufactura *manufactura);
+Producto *crearNodoProducto(int id, char descripcionproducto[]);
+Producto *agregarProducto(CelulaManufactura *manufactura);
+void listarProductos(CelulaManufactura *manufactura);
+Producto *seleccionarProducto(CelulaManufactura *manufactura);
+Producto *eliminarProducto(CelulaManufactura *manufactura);
 
 #endif // _Funciones_
 

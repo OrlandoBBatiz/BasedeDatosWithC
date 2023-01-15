@@ -12,249 +12,79 @@ CelulaManufactura *manufactura;
 //manufactura.materiaprima = NULL;
 //manufactura.maquina = NULL;
 
-int opcionesMenuPrincipal()
-{
-    int opcion;
-    fflush(stdin);
-    printf("1. Materia Prima\n\n");
-    printf("2. Productos\n\n");
-    printf("3. Maquinas\n\n");
-    printf("4. Salir\n\n");
-    printf("Seleccione una opcion(1-4): ");
-    scanf("%d",&opcion);
-    while(opcion<0&&opcion>4)
-    {
-        printf("\n\nHas ingresado una opcion no valida!\n\n");
-        printf("1. Materia Prima\n\n");
-    	printf("2. Productos\n\n");
-    	printf("3. Maquinas\n\n");
-        printf("Opcion (1 / 2 / 3  ): ");
-        scanf("%d",&opcion);
-    }
-    return opcion;
-}
-
 //Men� principal
 
-int main()
-{
-int opcion;
-    do{
+int main(){
 
-    system(CLEAR);
-        printf("MANUFACTURA\n\n");
-        opcion=opcionesMenuPrincipal();
-        switch(opcion)
-        {
-        case 1:
-            menuMateriaPrima();
-            break;
+    int opcionMP;
+    int opcionMateriaPrima;
+    manufactura->materiaPrima = NULL;
+    manufactura->producto = NULL;
+    manufactura->maquina = NULL;
+        do{
+        system(CLEAR);
+            printf("=============MANUFACTURA=============\n\n");
+            printf("Menu Principal\n");
+            printf("1. Materia Prima\n");
+            printf("2. Productos\n");
+            printf("3. Maquinas\n");
+            printf("4. Salir\n");
+            print("Seleccione una opcion (1-4): ");
+            scanf("%d", &opcionMP);
+            switch(opcionMP)
+            {
+            case 1:
+                printf("Menu Materia Prima\n");
+                printf("1. Agregar Materia Prima\n");
+                printf("2. Modificar Materia Prima\n");
+                printf("3. Eliminar Materia Prima\n");
+                printf("4. Listar Materia Prima\n");
+                printf("5. Regresar\n");
+                printf("Seleccione una opcion (1-5): ");
+                scanf("%d", &opcionMateriaPrima);
+                switch(opcionMateriaPrima)
+                {
+                case 1:
+                    manufactura->materiaPrima = agregarMateriaPrima(manufactura);
+                    break;
+                case 2:
+                    manufactura->materiaPrima = modificarMateriaPrima(manufactura);
+                    break;
+                case 3:
+                    manufactura->materiaPrima = eliminarMateriaPrima(manufactura);
+                    break;
+                case 4:
+                    listarMateriasPrimas(manufactura);
+                    break;
+                case 5:
+                    printf("Salida al Menú Princiap\n\n");
+                    break;
+                default:
+                    printf("Opcion no valida\n\n");
+                    break;
+                }
 
-        case 2:
-            menuProductos();
-            break;
+                break;
 
-        case 3:
-            menuMaquinas();
-            break;
+            case 2:
+                
+                break;
 
-        case 4:
-            printf("Gracias por utilizar el programa\n\n");
-	        break;
-        default:
-            printf("Opcion no valida\n\n");
-            break;
-	    }
-    }
-	while(opcion!=4);
-	return 0;
+            case 3:
+                
+                break;
+
+            case 4:
+                printf("Gracias por utilizar el programa...\n\n");
+                break;
+            default:
+                printf("Opcion no valida\n\n");
+                break;
+            }
+        }
+        while(opcionMP!=4);
+    return 0;
 }
 
 //---
 
-int opcionesMateriaPrima()
-{
-    fflush(stdin);
-    int opcion;
-    printf("1. Agregar Materia prima\n");
-    printf("2. Modificar Materia prima\n");
-    printf("3. Eliminar Materia prima\n");
-    printf("4. Listar Materias primas\n");
-    printf("5. Regresar\n");
-    printf("Seleccione una opcion (1-5): ");
-    scanf("%d",&opcion);
-    while(opcion<0||opcion>5)
-    {
-        fflush(stdin);
-        printf("\n\nHas ingresado una opcion invalida!\n\n");
-        printf("1. Agregar Materia prima\n\n");
-    	printf("2. Modificar Materia prima\n\n");
-    	printf("3. Eliminar Materia prima\n\n");
-        printf("4. Listar Materias primas");
-        printf("Opcion (1 - 5): ");
-    }
-    system(CLEAR);
-    return opcion;
-}
-
-void menuMateriaPrima()
-{
-    int opcion;
-    do
-    {
-        system(CLEAR);
-        printf("MENU MATERIA PRIMA\n\n");
-        opcion=opcionesMateriaPrima();
-        switch(opcion)
-        {
-        case 1:
-            agregarMateriaPrima();
-            break;
-
-        case 2:
-            modificarMateriaPrima();
-            break;
-
-        case 3:
-            eliminarMateriaPrima();
-            break;
-
-        case 4:
-            listarMateriasPrimas();
-            break;
-
-        case 5:
-            break;
-        }
-
-        system(CLEAR);
-    }
-    while(opcion!=5);
-
-}
-
-//---
-
-int opcionesProductos()
-{
-    fflush(stdin);
-    int opcion;
-    printf("1. Agregar Producto\n");
-    printf("2. Seleccionar Producto\n");
-    printf("3. Listar Producto\n");
-    printf("4. Eliminar Producto\n");
-    printf("5. Regresar\n");
-    printf("Seleccione una opcion (1-5): ");
-    scanf("%d",&opcion);
-    while(opcion<0||opcion>5)
-    {
-        fflush(stdin);
-        printf("\n\nHas ingresado una opcion invalida\n\n");
-        printf("1. Agregar Producto\n\n");
-    	printf("2. Seleccionar Producto\n\n");
-    	printf("3. Listar Producto\n\n");
-        printf("4. Eliminar Producto");
-        printf("Opcion (1 - 4): ");
-    }
-    system(CLEAR);
-    return opcion;
-}
-
-void menuProductos()
-{
-    int opcion;
-    do
-    {
-        system(CLEAR);
-        printf("MENU PRODUCTOS\n\n");
-        opcion=opcionesProductos();
-        switch(opcion)
-        {
-        case 1:
-            agregarProducto();
-            break;
-
-        case 2:
-            seleccionarProducto();
-            break;
-
-        case 3:
-            listarProductos();
-            break;
-
-        case 4:
-            eliminarProducto();
-            break;
-
-        case 5:
-            break;
-        }
-
-        system(CLEAR);
-    }
-    while(opcion!=5);
-
-}
-
-//---
-
-int opcionesMaquinas()
-{
-    fflush(stdin);
-    int opcion;
-    printf("1. Agregar Maquina\n");
-    printf("2. Seleccionar Maquina\n");
-    printf("3. Listar Maquina\n");
-    printf("4. Eliminar Maquina\n");
-    printf("5. Regresar\n");
-    printf("Seleccione una opcion (1-5): ");
-    scanf("%d",&opcion);
-    while(opcion<0||opcion>5)
-    {
-        fflush(stdin);
-        printf("\n\nHas ingresado una opcion invalida\n\n");
-        printf("1. Agregar Maquina\n\n");
-    	printf("2. Seleccionar Maquina\n\n");
-    	printf("3. Listar Maquina\n\n");
-        printf("4. Eliminar Maquina");
-        printf("Opcion (1 - 4): ");
-    }
-    system(CLEAR);
-    return opcion;
-}
-
-void menuMaquinas()
-{
-    int opcion;
-    do
-    {
-        system(CLEAR);
-        printf("MENU MAQUINAS\n\n");
-        opcion=opcionesMaquinas();
-        switch(opcion)
-        {
-        case 1:
-            agregarMaquina();
-            break;
-
-        case 2:
-            seleccionarMaquina();
-            break;
-
-        case 3:
-            listarMaquinas();
-            break;
-
-        case 4:
-            eliminarMaquina();
-            break;
-
-        case 5:
-            break;
-        }
-
-        system(CLEAR);
-    }
-    while(opcion!=5);
-
-}
