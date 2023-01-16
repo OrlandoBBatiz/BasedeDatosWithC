@@ -102,7 +102,7 @@ int main(){
                         seleccionarProducto(manufactura->producto, id_producto);
                         break;
                     case 3:
-                        manufactura->producto = listarProductos(manufactura->producto);
+                        listarProductos(manufactura->producto);
                         break;
                     case 4:
                         printf("Ingrese el ID del producto a eliminar: ");
@@ -138,7 +138,7 @@ int main(){
                         seleccionarMaquina(manufactura->maquina, id_maquina);
                         break;
                     case 3:
-                        manufactura->maquina = listarMaquina(manufactura->maquina);
+                        listarMaquina(manufactura->maquina);
                         break;
                     case 4:
                         printf("Ingrese el ID de la maquina a eliminar: ");
