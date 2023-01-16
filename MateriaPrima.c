@@ -10,6 +10,7 @@ MateriaPrima *crearNodo(int id, char decripcionmateria[], float cantidad){
     printf("Error al reservar memoria.\n");
     return;
   }
+  nuevo->id_materiaprima = id;
   strcpy(nuevo->descripcionmateria, decripcionmateria);
   nuevo->cantidad = cantidad;
   nuevo->apSiguiente = NULL;
@@ -33,7 +34,7 @@ MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripci
   id = aux->id_materiaprima + 1;
   }
   
-  nuevo = crearNodo( id, descripcionmateria, cantidad);
+  nuevo = crearNodo(id, descripcionmateria, cantidad);
   
   aux = manufactura->materiaPrima;
   if(aux == NULL){
@@ -61,12 +62,13 @@ void listarMateriasPrimas(CelulaManufactura *manufactura) {
     return;
   }
   else{
-    print("Id Materia Prima \t Descripcion \t Cantidad");
+    printf("Id Materia Prima \t Descripcion \t Cantidad\n");
 
     while (aux != NULL) {
       printf("ID: %d", aux->id_materiaprima);
-      printf("\tDescripcion: %s", aux->descripcionmateria);
-      printf("\tCantidad: %f", aux->cantidad);
+      printf("\t%s", aux->descripcionmateria);
+      printf("\t%.2f", aux->cantidad);
+      aux = aux->apSiguiente;
     }
   }
   
