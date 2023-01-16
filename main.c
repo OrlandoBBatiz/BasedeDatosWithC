@@ -108,16 +108,15 @@ int main(){
                         printf("Ingrese el ID del producto a eliminar: ");
                         scanf("%d", &id_producto);
                         manufactura->producto = eliminarProducto(manufactura->producto, id_producto);
-                    break;
+                        break;
                     case 5:
                         printf("Regresando al menú principal\n\n");
                         break;
                     default:
                         printf("Opcion no valida\n\n");
                         break;
-                
-                break;
                 }
+                break;
             case 3:
                 printf("Menu Maquinas\n");
                 printf("1. Agregar Maquina\n");
@@ -151,9 +150,8 @@ int main(){
                     default:
                         printf("Opcion no valida\n\n");
                         break;
-                
-                break;
                 }
+                break;
             case 4:
                 printf("Gracias por utilizar el programa...\n\n");
                 break;
