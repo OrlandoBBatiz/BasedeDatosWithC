@@ -17,11 +17,13 @@ MateriaPrima *crearNodo(int id, char decripcionmateria[], float cantidad){
   return nuevo;
 }
 
-MateriaPrima *agregarMateriaPrima(MateriaPrima *materiaPrima, char descripcionmateria[], float cantidad)
+MateriaPrima *agregarMateriaPrima(MateriaPrima *materiaPrima)
  {
   MateriaPrima *nuevo; 
   MateriaPrima *aux;
   int id;
+  char descripcionmateria[50];
+  float cantidadmateriaprima;
 
   aux = materiaPrima;
   if(aux == NULL){
@@ -34,7 +36,14 @@ MateriaPrima *agregarMateriaPrima(MateriaPrima *materiaPrima, char descripcionma
   id = aux->id_materiaprima + 1;
   }
   
-  nuevo = crearNodo(id, descripcionmateria, cantidad);
+  printf("Descripcion Materia Prima: ");
+  fflush(stdin);
+  fgets(descripcionmateria, 50, stdin);
+  fflush(stdin);
+  printf("Cantidad Materia Prima: ");
+  scanf("%f", &cantidadmateriaprima);
+
+  nuevo = crearNodo(id, descripcionmateria, cantidadmateriaprima);
   
   aux = materiaPrima;
   if(aux == NULL){

@@ -53,13 +53,7 @@ int main(){
                 switch(opcionMateriaPrima)
                 {
                 case 1:
-                    printf("Descripcion Materia Prima: ");
-                    fflush(stdin);
-                    fgets(descripcionmateria, 50, stdin);
-                    fflush(stdin);
-                    printf("Cantidad Materia Prima: ");
-                    scanf("%f", &cantidadmateriaprima);
-                    manufactura->materiaPrima = agregarMateriaPrima(manufactura->materiaPrima, descripcionmateria, cantidadmateriaprima);
+                    manufactura->materiaPrima = agregarMateriaPrima(manufactura->materiaPrima);
                     break;
                 case 2:
                     printf("Ingrese el ID de la materia prima a modificar: ");

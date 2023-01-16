@@ -3,10 +3,10 @@
 #include "estructuras.h"
 
 Producto *crearNodoProducto(int id, char descripcionproducto[]);
-Producto *agregarProducto(CelulaManufactura *manufactura, char descripcionproducto[]);
-void listarProductos(CelulaManufactura *manufactura);
-Producto *seleccionarProducto(CelulaManufactura *manufactura, int id_producto);
-Producto *eliminarProducto(CelulaManufactura *manufactura, int id_producto);
+Producto *agregarProducto(Producto *producto);
+void listarProductos(Producto *producto);
+Producto *seleccionarProducto(Producto *producto, int id_producto);
+Producto *eliminarProducto(Producto *producto, int id_producto);
 
 #endif // _Funciones_
 
