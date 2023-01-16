@@ -97,6 +97,7 @@ void listarMaquina(Maquina *apMaquina){
             aux = aux->apSiguiente;
         }
     }
+    getch();
 }
 Maquina *eliminarMaquina(Maquina *apMaquina, int id_maquina){
     Maquina *aux;

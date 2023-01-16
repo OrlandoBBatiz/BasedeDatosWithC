@@ -7,3 +7,5 @@ Maquina *agregarMaquina(Maquina *apMaquina);
 void *seleccionarMaquina(Maquina *apMaquina, int id_maquina);
 void listarMaquina(Maquina *apMaquina);
 Maquina *eliminarMaquina(Maquina *apMaquina, int id_maquina);
+
+#endif /* MAQUINA_H */
