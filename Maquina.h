@@ -4,6 +4,6 @@
 
 Maquina *CrearNodoMaquina(int id, char descripcion[]);
 Maquina *agregarMaquina(Maquina *apMaquina);
-Maquina *seleccionarMaquina(Maquina *apMaquina, int id_maquina);
+void *seleccionarMaquina(Maquina *apMaquina, int id_maquina);
 void listarMaquina(Maquina *apMaquina);
 Maquina *eliminarMaquina(Maquina *apMaquina, int id_maquina);

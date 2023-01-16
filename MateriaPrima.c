@@ -74,7 +74,7 @@ void listarMateriasPrimas(MateriaPrima *materiaPrima) {
     printf("Id Materia Prima \t Descripcion \t Cantidad");
 
     while (aux != NULL) {
-      printf("\nID: %d\t%s\t%.2f", aux->id_materiaprima, aux->descripcionmateria, aux->cantidad);
+      printf("\n%d\t%s\t%.2f", aux->id_materiaprima, aux->descripcionmateria, aux->cantidad);
       aux = aux->apSiguiente;
     }
   }
@@ -113,6 +113,7 @@ MateriaPrima *modificarMateriaPrima(MateriaPrima *materiaPrima, int id_materialp
 
   // Busca el elemento con el ID especificado
   MateriaPrima *aux;
+  int cantidad;
   aux = materiaPrima;
   while (aux != NULL && aux->id_materiaprima != id_materialprima) {
     aux = aux->apSiguiente;
@@ -128,8 +129,8 @@ MateriaPrima *modificarMateriaPrima(MateriaPrima *materiaPrima, int id_materialp
     fgets(aux->descripcionmateria, 50, stdin);
     fflush(stdin);
     printf("Cantidad: ");
-    scanf("%d", &aux->cantidad);
-
+    scanf("%d", &cantidad);
+    aux->cantidad = cantidad;
     printf("Materia prima modificada correctamente.\n");
   }
   getch();

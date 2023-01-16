@@ -14,6 +14,7 @@ Producto *crearNodoProducto(int id, char descripcionproducto[])
     strcpy(nuevo->descripcionproducto, descripcionproducto);
     while(opcion==1){
       if(opcion==1){
+        printf("\nMaterias Prima del producto: \n\n");
         nuevo->materiaPrima = agregarMateriaPrima(nuevo->materiaPrima);
         printf("Desea agregar materia prima al producto? (1)Si (2)No: ");
         scanf("%d", &opcion);
@@ -27,7 +28,7 @@ Producto *agregarProducto(Producto *producto)
   Producto *nuevo;
   Producto *aux;
   int id;
-  char descripcionproducto[50];
+  char descripcionproducto[20];
 
   aux = producto;
   if(aux == NULL){
@@ -41,7 +42,7 @@ Producto *agregarProducto(Producto *producto)
   }
   printf("Descripcion Producto: ");
   fflush(stdin);
-  fgets(descripcionproducto, 50, stdin);
+  fgets(descripcionproducto, 20, stdin);
   fflush(stdin);
   nuevo = crearNodoProducto(id, descripcionproducto);
   aux = producto;
@@ -72,13 +73,15 @@ void listarProductos(Producto *producto) {
       printf("%d\t%s",aux->id_producto, aux->descripcionproducto);
       printf("Materias Primas:\n");
       while(aux->materiaPrima != NULL){
-        printf("\t%d\t%s",aux->materiaPrima->id_materiaprima,aux->materiaPrima->descripcionmateria);
+        printf("\t%d\t%s\t%.2f",aux->materiaPrima->id_materiaprima,aux->materiaPrima->descripcionmateria, aux->materiaPrima->cantidad);
         aux->materiaPrima = aux->materiaPrima->apSiguiente;
       }   
       aux = aux->apSiguiente;
     }
     
-    }
+  }
+
+  getch();
 }
 Producto *eliminarProducto(Producto *producto, int id_producto) {
   Producto *aux = producto;
@@ -105,11 +108,11 @@ Producto *eliminarProducto(Producto *producto, int id_producto) {
   getch();
   return producto;
 }
-
-Producto *seleccionarProducto(Producto *producto, int id_producto) {
+void *seleccionarProducto(Producto *producto, int id_producto) {
   
   // Busca el elemento con el ID especificado
-  Producto *aux = producto;
+  Producto *aux;
+  aux = producto;
   while (aux != NULL && aux->id_producto != id_producto) {
     aux = aux->apSiguiente;
   }

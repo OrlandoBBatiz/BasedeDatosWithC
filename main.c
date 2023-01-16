@@ -97,7 +97,7 @@ int main(){
                     case 2:
                         printf("Ingrese el ID del producto a seleccionar: ");
                         scanf("%d", &id_producto);
-                        manufactura->producto = seleccionarProducto(manufactura->producto, id_producto);
+                        seleccionarProducto(manufactura->producto, id_producto);
                         break;
                     case 3:
                         manufactura->producto = listarProductos(manufactura->producto);
@@ -115,7 +115,7 @@ int main(){
                         break;
                 
                 break;
-
+                }
             case 3:
                 printf("Menu Maquinas\n");
                 printf("1. Agregar Maquina\n");
@@ -133,7 +133,7 @@ int main(){
                     case 2:
                         printf("Ingrese el ID de la maquina a seleccionar: ");
                         scanf("%d", &id_maquina);
-                        manufactura->maquina = seleccionarMaquina(manufactura->maquina, id_maquina);
+                        seleccionarMaquina(manufactura->maquina, id_maquina);
                         break;
                     case 3:
                         manufactura->maquina = listarMaquina(manufactura->maquina);
@@ -151,7 +151,7 @@ int main(){
                         break;
                 
                 break;
-
+                }
             case 4:
                 printf("Gracias por utilizar el programa...\n\n");
                 break;
