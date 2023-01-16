@@ -48,18 +48,29 @@ MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripci
 
   printf("Materia Prima dada de alta correctamente.\n");
   getch();
+  return manufactura->materiaPrima;
 }
 
 void listarMateriasPrimas(CelulaManufactura *manufactura) {
   // Recorre la lista de materias prima e imprime los datos de cada una
-  MateriaPrima *aux = manufactura->materiaPrima;
-  print("Id Materia Prima %t Descripcion %t Cantidad");
-
-  while (aux != NULL) {
-    printf("ID: %d", aux->id_materiaprima);
-    printf("%tDescripcion: %s", aux->descripcionmateria);
-    printf("%tCantidad: %f", aux->cantidad);
+  MateriaPrima *aux;
+  aux = manufactura->materiaPrima;
+  if(aux == NULL){
+    printf("No hay materias primas registradas.\n");
+    getch();
+    return;
   }
+  else{
+    print("Id Materia Prima \t Descripcion \t Cantidad");
+
+    while (aux != NULL) {
+      printf("ID: %d", aux->id_materiaprima);
+      printf("\tDescripcion: %s", aux->descripcionmateria);
+      printf("\tCantidad: %f", aux->cantidad);
+    }
+  }
+  
+  getch();
 }
 
 MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materiaprima) {
@@ -85,6 +96,7 @@ MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materi
     printf("Materia prima eliminada correctamente.\n");
   }
   getch();
+  return manufactura->materiaPrima;
 }
 
 MateriaPrima *modificarMateriaPrima(CelulaManufactura *manufactura, int id_materialprima) {
@@ -112,4 +124,5 @@ MateriaPrima *modificarMateriaPrima(CelulaManufactura *manufactura, int id_mater
     printf("Materia prima modificada correctamente.\n");
   }
   getch();
+  return manufactura->materiaPrima;
 }
