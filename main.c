@@ -3,16 +3,11 @@
 #include <string.h>
 #include "estructuras.h"
 #include "MateriaPrima.h"
-#include "Producto.h"
 #define CLEAR "cls"
-
-
-int opcionesMenuPrincipal();
+//#include "Producto.h"
 
 CelulaManufactura *manufactura;
-//manufactura.producto = NULL;
-//manufactura.materiaprima = NULL;
-//manufactura.maquina = NULL;
+
 
 //Men� principal
 
@@ -20,6 +15,7 @@ int main(){
 
     int opcionMP=0;
     int opcionMateriaPrima=0;
+    manufactura = (CelulaManufactura *)malloc(sizeof(CelulaManufactura));
     manufactura->materiaPrima = NULL;
     manufactura->producto = NULL;
     manufactura->maquina = NULL;
@@ -33,8 +29,7 @@ int main(){
 
     int id_maquina;
     char descripcionmaquina[20];
-
-    printf("Hello   World");
+    printf("Hello World");
         do{
         system(CLEAR);
             printf("=============MANUFACTURA=============\n\n");
@@ -43,7 +38,7 @@ int main(){
             printf("2. Productos\n");
             printf("3. Maquinas\n");
             printf("4. Salir\n");
-            print("Seleccione una opcion (1-4): ");
+            printf("Seleccione una opcion (1-4): ");
             scanf("%d", &opcionMP);
             switch(opcionMP)
             {
@@ -107,6 +102,7 @@ int main(){
             }
         }
         while(opcionMP!=4);
+        
     return 0;
 }
 
