@@ -15,6 +15,8 @@ int main(){
 
     int opcionMP=0;
     int opcionMateriaPrima=0;
+    int opcionProducto=0;
+    int opcionMaquina=0;
     manufactura = (CelulaManufactura *)malloc(sizeof(CelulaManufactura));
     manufactura->materiaPrima = NULL;
     manufactura->producto = NULL;
@@ -66,10 +68,10 @@ int main(){
                     manufactura->materiaPrima = eliminarMateriaPrima(manufactura->materiaPrima, id_materiaprima);
                     break;
                 case 4:
-                    listarMateriasPrimas(manufactura);
+                    listarMateriasPrimas(manufactura->materiaPrima);
                     break;
                 case 5:
-                    printf("Salida al Menú Princiap\n\n");
+                    printf("Regresando al Menú Principal\n\n");
                     break;
                 default:
                     printf("Opcion no valida\n\n");
@@ -79,10 +81,74 @@ int main(){
                 break;
 
             case 2:
+                printf("Menu Productos\n");
+                printf("1. Agregar Producto\n");
+                printf("2. Seleccionar Producto\n");
+                printf("3. Listar Producto\n");
+                printf("4. Eliminar Producto\n");
+                printf("5. Regresar\n");
+                printf("Seleccione una opcion (1-5): ");
+                scanf("%d", &opcionProducto);
+                switch(opcionProducto)
+                {
+                    case 1:
+                        manufactura->producto = agregarProducto(manufactura->producto);
+                        break;
+                    case 2:
+                        printf("Ingrese el ID del producto a seleccionar: ");
+                        scanf("%d", &id_producto);
+                        manufactura->producto = seleccionarProducto(manufactura->producto, id_producto);
+                        break;
+                    case 3:
+                        manufactura->producto = listarProductos(manufactura->producto);
+                        break;
+                    case 4:
+                        printf("Ingrese el ID del producto a eliminar: ");
+                        scanf("%d", &id_producto);
+                        manufactura->producto = eliminarProducto(manufactura->producto, id_producto);
+                    break;
+                    case 5:
+                        printf("Regresando al menú principal\n\n");
+                        break;
+                    default:
+                        printf("Opcion no valida\n\n");
+                        break;
                 
                 break;
 
             case 3:
+                printf("Menu Maquinas\n");
+                printf("1. Agregar Maquina\n");
+                printf("2. Seleccionar Maquina\n");
+                printf("3. Listar Maquina\n");
+                printf("4. Eliminar Maquina\n");
+                printf("5. Regresar\n");
+                printf("Seleccione una opcion (1-5): ");
+                scanf("%d", &opcionMaquina);
+                switch(opcionMaquina)
+                {
+                    case 1:
+                        manufactura->maquina = agregarMaquina(manufactura->maquina);
+                        break;
+                    case 2:
+                        printf("Ingrese el ID de la maquina a seleccionar: ");
+                        scanf("%d", &id_maquina);
+                        manufactura->maquina = seleccionarMaquina(manufactura->maquina, id_maquina);
+                        break;
+                    case 3:
+                        manufactura->maquina = listarMaquina(manufactura->maquina);
+                        break;
+                    case 4:
+                        printf("Ingrese el ID de la maquina a eliminar: ");
+                        scanf("%d", &id_maquina);
+                        manufactura->maquina = eliminarMaquina(manufactura->maquina, id_maquina);
+                        break;
+                    case 5:
+                        printf("Regresando al menú principal\n\n");
+                        break;
+                    default:
+                        printf("Opcion no valida\n\n");
+                        break;
                 
                 break;
 
