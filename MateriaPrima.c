@@ -5,7 +5,7 @@
 
 MateriaPrima *crearNodo(int id, char decripcionmateria[], float cantidad){
   MateriaPrima *nuevo; 
-  nuevo = malloc(sizeof(MateriaPrima));
+  nuevo = (MateriaPrima*)malloc(sizeof(MateriaPrima));
   if (nuevo == NULL) {
     printf("Error al reservar memoria.\n");
     return;
