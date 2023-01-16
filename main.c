@@ -3,8 +3,10 @@
 #include <string.h>
 #include "estructuras.h"
 #include "MateriaPrima.h"
+#include "Producto.h"
+#include "Maquina.h"
 #define CLEAR "cls"
-//#include "Producto.h"
+
 
 CelulaManufactura *manufactura;
 
