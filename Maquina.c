@@ -14,7 +14,7 @@ Maquina *CrearNodoMaquina(int id, char descripcion[]){
     strcpy(nuevo->nombre, descripcion);
     while(opcion==1){
       if(opcion==1){
-        printf("\nProductos de la maquina: \n\n");
+        printf("\nIngrese el listado de los Productos de la Maquina \n\n");
         nuevo->producto = agregarProducto(nuevo->producto);
         printf("Desea agregar producto a la maquina? (1)Si (2)No: ");
         scanf("%d", &opcion);
@@ -24,8 +24,8 @@ Maquina *CrearNodoMaquina(int id, char descripcion[]){
     return nuevo;
 }
 Maquina *agregarMaquina(Maquina *apMaquina){
-    Producto *nuevo;
-    Producto *aux;
+    Maquina *nuevo;
+    Maquina *aux;
     int id;
     char descripcion[20];
 
@@ -82,7 +82,7 @@ void *seleccionarMaquina(Maquina *apMaquina, int id_maquina){
 }
 void listarMaquina(Maquina *apMaquina){
     Maquina *aux;
-    Maquina = apMaquina;
+    aux = apMaquina;
 
     if(aux == NULL){
         printf("No hay maquinas registradas.\n");

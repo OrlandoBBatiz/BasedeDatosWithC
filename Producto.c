@@ -14,7 +14,7 @@ Producto *crearNodoProducto(int id, char descripcionproducto[])
     strcpy(nuevo->descripcionproducto, descripcionproducto);
     while(opcion==1){
       if(opcion==1){
-        printf("\nMaterias Prima del producto: \n\n");
+        printf("\nIngrese las Materias Primas del Producto \n\n");
         nuevo->materiaPrima = agregarMateriaPrima(nuevo->materiaPrima);
         printf("Desea agregar materia prima al producto? (1)Si (2)No: ");
         scanf("%d", &opcion);
