@@ -3,10 +3,10 @@
 #include "estructuras.h"
 
 MateriaPrima *crearNodo(int id, char descripcionmateria[], float cantidad);
-MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripcionmateria[], float cantidad);
-void listarMateriasPrimas(CelulaManufactura *manufactura);
-MateriaPrima *modificarMateriaPrima(CelulaManufactura *manufactura, int id_materiaprima);
-MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materiaprima);
+MateriaPrima *agregarMateriaPrima(MateriaPrima *materiaPrima, char descripcionmateria[], float cantidad);
+void listarMateriasPrimas(MateriaPrima *materiaPrima);
+MateriaPrima *modificarMateriaPrima(MateriaPrima *materiaPrima, int id_materiaprima);
+MateriaPrima *eliminarMateriaPrima(MateriaPrima *materiaPrima, int id_materiaprima);
 
 
 #endif // _Funciones_

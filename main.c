@@ -29,7 +29,6 @@ int main(){
 
     int id_maquina;
     char descripcionmaquina[20];
-    printf("Hello World");
         do{
         system(CLEAR);
             printf("=============MANUFACTURA=============\n\n");
@@ -60,17 +59,17 @@ int main(){
                     fflush(stdin);
                     printf("Cantidad Materia Prima: ");
                     scanf("%f", &cantidadmateriaprima);
-                    manufactura->materiaPrima = agregarMateriaPrima(manufactura, descripcionmateria, cantidadmateriaprima);
+                    manufactura->materiaPrima = agregarMateriaPrima(manufactura->materiaPrima, descripcionmateria, cantidadmateriaprima);
                     break;
                 case 2:
                     printf("Ingrese el ID de la materia prima a modificar: ");
                     scanf("%d", &id_materiaprima);
-                    manufactura->materiaPrima = modificarMateriaPrima(manufactura, id_materiaprima);
+                    manufactura->materiaPrima = modificarMateriaPrima(manufactura->materiaPrima, id_materiaprima);
                     break;
                 case 3:
                     printf("Ingrese el ID de la materia prima a eliminar: ");
                     scanf("%d", &id_materiaprima);
-                    manufactura->materiaPrima = eliminarMateriaPrima(manufactura, id_materiaprima);
+                    manufactura->materiaPrima = eliminarMateriaPrima(manufactura->materiaPrima, id_materiaprima);
                     break;
                 case 4:
                     listarMateriasPrimas(manufactura);

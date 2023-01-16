@@ -9,34 +9,54 @@ Producto *crearNodoProducto(int id, char descripcionproducto[])
     nuevo->apSiguiente = NULL;
     return nuevo;
 }	
-Producto *agregarProducto(CelulaManufactura *manufactura)
+Producto *agregarProducto(CelulaManufactura *manufactura, char descripcionproducto[])
  {
-  Producto *nuevo = (Producto *)malloc(sizeof(Producto));
+  Producto *nuevo;
+  Producto *aux;
+  int id;
 
-  // Pide al usuario que ingrese los datos del producto
-  printf("Ingresa los datos del producto:\n");
-  printf("Ingrese el id del prodcto: ");
-  scanf("%d", &nuevo->id_producto);
-  printf("Nombre del producto: ");
-  scanf("%s", nuevo->descripcionproducto);
-
-  // Enlaza el nuevo elemento al final de la lista
-  nuevo->siguiente = NULL;
-  if (manufactura->producto == NULL) {
-    manufactura->producto = nuevo;
-  } else {
-    Producto *aux = manufactura->producto;
-    while (aux->siguiente != NULL) {
-      aux = aux->siguiente;
-    }
-    aux->siguiente = nuevo;
+  aux = manufactura->producto;
+  if(aux == NULL){
+    id = 1;
   }
-
+  else{
+    while (aux->apSiguiente != NULL) {
+    aux = aux->apSiguiente;
+  }
+  id = aux->id_producto + 1;
+  }
+  nuevo = crearNodoProducto(id, descripcionproducto);
+  aux = manufactura->producto;
+  if(aux == NULL){
+    manufactura->producto = nuevo;
+  }
+  else{
+    while (aux->apSiguiente != NULL) {
+      aux = aux->apSiguiente;
+    }
+    aux->apSiguiente = nuevo;
+  }
   printf("Producto dado de alta correctamente.\n");
   getch();
 }
+void listarProductos(CelulaManufactura *manufactura) {
+  // Recorre la lista de productos e imprime los datos de cada uno
+  Producto *aux;
+  aux = manufactura->producto;
 
-void eliminarProducto(Manufactura *manufactura) {
+  if (aux == NULL) {
+    printf("No hay productos registrados.\n");
+  } else {
+    printf("Id Producto \t Nombre\n");
+    while(aux != NULL){
+      printf("--------------------------------------------------\n");
+      printf("%d\t%s"
+      aux = aux->apSiguiente;
+    }
+    
+    }
+}
+Producto *eliminarProducto(CelulaManufactura *manufactura, int id_producto) {
   // Pide al usuario que ingrese el ID del producto a eliminar
   int id;
   printf("Ingresa el ID del producto a eliminar: ");
@@ -65,28 +85,31 @@ void eliminarProducto(Manufactura *manufactura) {
   getch();
 }
 
-void modificarProducto(Manufactura *manufactura) {
-  // Pide al usuario que ingrese el ID del producto a modificar
+Producto *seleccionarProducto(CelulaManufactura *manufactura, int id_producto) {
+  // Pide al usuario que ingrese el ID del producto a eliminar
   int id;
-  printf("Ingresa el ID del producto a modificar: ");
+  printf("Ingresa el ID del producto a eliminar: ");
   scanf("%d", &id);
 
   // Busca el elemento con el ID especificado
   Producto *aux = manufactura->producto;
+  Producto *anterior = NULL;
   while (aux != NULL && aux->id_producto != id) {
+    anterior = aux;
     aux = aux->siguiente;
   }
 
-  // Si se encontr� el elemento, pide al usuario que ingrese los nuevos datos
+  // Si se encontr� el elemento, lo elimina de la lista
   if (aux == NULL) {
     printf("Producto no encontrado.\n");
   } else {
-    printf("Ingresa los nuevos datos del producto:\n");
-    printf("Descripcion: ");
-    scanf("%s", aux->descripcionproducto);
-
-    printf("Producto modificado correctamente.\n");
+    if (anterior == NULL) {
+      manufactura->producto = aux->siguiente;
+    } else {
+      anterior->siguiente = aux->siguiente;
+    }
+    free(aux);
+    printf("Producto eliminado correctamente.\n");
   }
   getch();
 }
-

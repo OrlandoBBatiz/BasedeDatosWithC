@@ -17,13 +17,13 @@ MateriaPrima *crearNodo(int id, char decripcionmateria[], float cantidad){
   return nuevo;
 }
 
-MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripcionmateria[], float cantidad)
+MateriaPrima *agregarMateriaPrima(MateriaPrima *materiaPrima, char descripcionmateria[], float cantidad)
  {
   MateriaPrima *nuevo; 
   MateriaPrima *aux;
   int id;
 
-  aux = manufactura->materiaPrima;
+  aux = materiaPrima;
   if(aux == NULL){
     id = 1;
   }
@@ -36,9 +36,9 @@ MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripci
   
   nuevo = crearNodo(id, descripcionmateria, cantidad);
   
-  aux = manufactura->materiaPrima;
+  aux = materiaPrima;
   if(aux == NULL){
-    manufactura->materiaPrima = nuevo;
+    materiaPrima = nuevo;
   }
   else{
     while (aux->apSiguiente != NULL) {
@@ -49,25 +49,23 @@ MateriaPrima *agregarMateriaPrima(CelulaManufactura *manufactura, char descripci
 
   printf("Materia Prima dada de alta correctamente.\n");
   getch();
-  return manufactura->materiaPrima;
+  return materiaPrima;
 }
 
-void listarMateriasPrimas(CelulaManufactura *manufactura) {
+void listarMateriasPrimas(MateriaPrima *materiaPrima) {
   // Recorre la lista de materias prima e imprime los datos de cada una
   MateriaPrima *aux;
-  aux = manufactura->materiaPrima;
+  aux = materiaPrima;
   if(aux == NULL){
     printf("No hay materias primas registradas.\n");
     getch();
     return;
   }
   else{
-    printf("Id Materia Prima \t Descripcion \t Cantidad\n");
+    printf("Id Materia Prima \t Descripcion \t Cantidad");
 
     while (aux != NULL) {
-      printf("ID: %d", aux->id_materiaprima);
-      printf("\t%s", aux->descripcionmateria);
-      printf("\t%.2f", aux->cantidad);
+      printf("\nID: %d\t%s\t%.2f", aux->id_materiaprima, aux->descripcionmateria, aux->cantidad);
       aux = aux->apSiguiente;
     }
   }
@@ -75,10 +73,10 @@ void listarMateriasPrimas(CelulaManufactura *manufactura) {
   getch();
 }
 
-MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materiaprima) {
+MateriaPrima *eliminarMateriaPrima(MateriaPrima *materiaPrima, int id_materiaprima) {
 
   // Busca el elemento con el ID especificado
-  MateriaPrima *aux = manufactura->materiaPrima;
+  MateriaPrima *aux = materiaPrima;
   MateriaPrima *anterior = NULL;
   while (aux != NULL && aux->id_materiaprima != id_materiaprima) {
     anterior = aux;
@@ -90,7 +88,7 @@ MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materi
     printf("Materia prima no encontrada.\n");
   } else {
     if (anterior == NULL) {
-      manufactura->materiaPrima = aux->apSiguiente;
+      materiaPrima = aux->apSiguiente;
     } else {
       anterior->apSiguiente = aux->apSiguiente;
     }
@@ -98,15 +96,15 @@ MateriaPrima *eliminarMateriaPrima(CelulaManufactura *manufactura, int id_materi
     printf("Materia prima eliminada correctamente.\n");
   }
   getch();
-  return manufactura->materiaPrima;
+  return materiaPrima;
 }
 
-MateriaPrima *modificarMateriaPrima(CelulaManufactura *manufactura, int id_materialprima) {
+MateriaPrima *modificarMateriaPrima(MateriaPrima *materiaPrima, int id_materialprima) {
  
 
   // Busca el elemento con el ID especificado
   MateriaPrima *aux;
-  aux = manufactura->materiaPrima;
+  aux = materiaPrima;
   while (aux != NULL && aux->id_materiaprima != id_materialprima) {
     aux = aux->apSiguiente;
   }
@@ -126,5 +124,5 @@ MateriaPrima *modificarMateriaPrima(CelulaManufactura *manufactura, int id_mater
     printf("Materia prima modificada correctamente.\n");
   }
   getch();
-  return manufactura->materiaPrima;
+  return materiaPrima;
 }

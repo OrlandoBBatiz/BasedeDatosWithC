@@ -11,12 +11,14 @@ typedef struct MateriaPrima{
 typedef struct Producto{
   int id_producto;
   char descripcionproducto[20];
+  struct MateriaPrima *materiaPrima;
   struct Producto *apSiguiente;
 } Producto;
 
 typedef struct Maquina{
   int id_maquina;
   char nombre[20];
+  struct Producto *producto;
   struct Maquina *apSiguiente;
 } Maquina;
 
